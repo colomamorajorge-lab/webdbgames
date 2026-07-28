@@ -334,7 +334,7 @@
 
         <div class="button-group">
             <a href="https://dobig.com/games" target="_blank" class="btn btn-roblox"><span>🎮 View all games (Roblox)</span></a>
-            <a href="https://dobig.com" target="_blank" class="btn btn-web"><span>🕹️ Play games (Web)</span></a>
+            <a href="#arcade-hub" class="btn btn-web"><span>🕹️ Play games (Web)</span></a>
         </div>
 
         <div class="social-group">
@@ -386,7 +386,7 @@
                     <div class="game-name">Garden Fishing</div>
                     <button class="game-btn">Play Now</button>
                 </div>
-                <!-- Juego 5: Bomb Defusal -->
+                <!-- Juego 5 -->
                 <div class="game-card">
                     <div class="game-icon">💣</div>
                     <div class="game-name">Bomb Defusal</div>
@@ -542,7 +542,7 @@
         }
 
         // --- JUEGO 4: GARDEN FISHING (PESCA) ---
-        let fishState = "waiting"; // waiting, biting, caught
+        let fishState = "waiting"; 
         let fishTimer = 0;
 
         function startFishing() {
@@ -567,7 +567,6 @@
                 fishState = "waiting";
                 fishTimer = Math.floor(Math.random() * 80) + 50;
             } else if (fishState === "waiting") {
-                // Penalización por tirar antes de tiempo
                 score = Math.max(0, score - 1);
                 scoreDisplay.innerText = "Fish Caught: " + score;
             }
@@ -576,26 +575,23 @@
         function updateFishing() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-            // Dibujar agua y estanque
             ctx.fillStyle = '#005577';
             ctx.fillRect(0, 200, canvas.width, 200);
 
-            // Lógica de pesca
             if (fishState === "waiting") {
                 fishTimer--;
                 if (fishTimer <= 0) {
                     fishState = "biting";
-                    fishTimer = 45; // Tiempo que tienes para hacer clic
+                    fishTimer = 45; 
                 }
             } else if (fishState === "biting") {
                 fishTimer--;
                 if (fishTimer <= 0) {
-                    fishState = "waiting"; // El pez se escapó
+                    fishState = "waiting"; 
                     fishTimer = Math.floor(Math.random() * 80) + 50;
                 }
             }
 
-            // Dibujar mensajes visuales en el canvas
             ctx.fillStyle = "#ffffff";
             ctx.font = "20px Poppins";
             ctx.textAlign = "center";
@@ -603,7 +599,7 @@
             if (fishState === "waiting") {
                 ctx.fillText("Bobber in water... Wait for a bite!", canvas.width / 2, 100);
                 ctx.fillStyle = "#00ffcc";
-                ctx.fillRect(canvas.width / 2 - 5, 180, 10, 30); // Sedal
+                ctx.fillRect(canvas.width / 2 - 5, 180, 10, 30);
             } else if (fishState === "biting") {
                 ctx.fillStyle = "#ffcc00";
                 ctx.font = "bold 26px Poppins";
