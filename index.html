@@ -231,13 +231,13 @@
         }
 
         #game-canvas {
-            background: radial-gradient(circle, #2d3436 0%, #1e272c 100%);
-            border: 4px solid #6c5ce7;
+            background: radial-gradient(circle, #3b2063 0%, #170b2c 100%);
+            border: 4px solid #ff7675;
             border-radius: 20px;
             display: block;
             margin: 0 auto 20px auto;
             max-width: 100%;
-            box-shadow: inset 0 0 25px rgba(0,0,0,0.9);
+            box-shadow: inset 0 0 30px rgba(0,0,0,0.8), 0 0 15px rgba(255,118,117,0.3);
         }
 
         .back-arcade-btn {
@@ -394,7 +394,7 @@
         </div>
     </div>
 
-    <!-- MOTOR DE JUEGOS ARCADE -->
+    <!-- MOTOR DE JUEGOS ARCADE CON EMOJIS Y DISEÑO CARTOON -->
     <script>
         const arcadeHub = document.getElementById('arcade-hub');
         const gameScreen = document.getElementById('game-screen');
@@ -425,7 +425,7 @@
             "Seed Sprout", "Rain Catcher", "Garden Tower"
         ];
 
-        let p1 = {x: 360, y: 360, w: 80, h: 25};
+        let p1 = {x: 350, y: 360, emoji: '🧺'};
         let entities = [];
         let stateTimer = 0;
 
@@ -445,162 +445,162 @@
 
         function initMinigameState() {
             entities = [];
+            p1.x = 350;
             if(activeMinigame === 1) {
-                entities = [{x: Math.random()*750, y: 0, r: 16, speed: 4}];
+                entities = [{x: Math.random()*750, y: 0, emoji: '🍓', speed: 3.5}];
+            } else if(activeMinigame === 3 || activeMinigame === 12 || activeMinigame === 14) {
+                let em = activeMinigame === 3 ? '🍉' : (activeMinigame === 12 ? '🍯' : '💧');
+                entities = [{x: Math.random()*700+50, y: 0, emoji: em, speed: 3}];
             } else if(activeMinigame === 4 || activeMinigame === 7) {
-                stateTimer = 50;
+                stateTimer = 60;
             } else if(activeMinigame === 6 || activeMinigame === 11 || activeMinigame === 13) {
-                for(let i=0; i<5; i++) entities.push({x: Math.random()*700+50, y: Math.random()*300+50, active: true});
+                let em = activeMinigame === 6 ? '🥕' : (activeMinigame === 11 ? '🍄' : '🌱');
+                for(let i=0; i<6; i++) entities.push({x: Math.random()*700+50, y: Math.random()*280+60, emoji: em, active: true});
             }
         }
 
         function updateMinigame() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-            if ((keys['ArrowLeft'] || keys['KeyA']) && p1.x > 0) p1.x -= 7;
-            if ((keys['ArrowRight'] || keys['KeyD']) && p1.x < canvas.width - p1.w) p1.x += 7;
+            // Fondo decorativo con estrellas/brillos sutiles
+            ctx.fillStyle = "rgba(255, 255, 255, 0.03)";
+            ctx.fillRect(20, 20, 20, 20);
+            ctx.fillRect(700, 80, 15, 15);
+            ctx.fillRect(400, 350, 20, 20);
+
+            if ((keys['ArrowLeft'] || keys['KeyA']) && p1.x > 20) p1.x -= 8;
+            if ((keys['ArrowRight'] || keys['KeyD']) && p1.x < canvas.width - 70) p1.x += 8;
+
+            ctx.font = "38px Fredoka";
+            ctx.textAlign = "center";
 
             switch(activeMinigame) {
                 case 1: // Fruit Grab
                     let f = entities[0];
                     f.y += f.speed;
-                    if(f.y > canvas.height) { f.y = 0; f.x = Math.random()*(canvas.width-40); }
-                    if(f.y + f.r >= p1.y && f.x >= p1.x && f.x <= p1.x + p1.w) {
+                    if(f.y > canvas.height) { f.y = 0; f.x = Math.random()*(canvas.width-60); }
+                    if(f.y >= p1.y - 20 && f.x >= p1.x - 10 && f.x <= p1.x + 50) {
                         score += 10; scoreDisplay.innerText = "Score: " + score;
-                        f.y = 0; f.x = Math.random()*(canvas.width-40); f.speed += 0.2;
+                        f.y = 0; f.x = Math.random()*(canvas.width-60); f.speed += 0.25;
                     }
-                    ctx.fillStyle = '#00b894'; ctx.fillRect(p1.x, p1.y, p1.w, p1.h);
-                    ctx.fillStyle = '#ff7675'; ctx.beginPath(); ctx.arc(f.x, f.y, f.r, 0, Math.PI*2); ctx.fill();
+                    ctx.fillText(p1.emoji, p1.x + 25, p1.y + 10);
+                    ctx.fillText(f.emoji, f.x, f.y);
                     break;
 
                 case 2: // Rate My Garden
-                    ctx.fillStyle = "#fdcb6e"; ctx.font = "26px Fredoka"; ctx.textAlign = "center";
-                    ctx.fillText("Click as fast as you can to rate flowers!", canvas.width/2, 100);
-                    ctx.fillStyle = "#ff7675"; ctx.fillRect(canvas.width/2 - 70, 180, 140, 60);
-                    ctx.fillStyle = "#fff"; ctx.fillText("RATE ⭐", canvas.width/2, 218);
+                    ctx.fillStyle = "#fdcb6e"; ctx.font = "26px Fredoka";
+                    ctx.fillText("Click as fast as you can to rate gardens!", canvas.width/2, 90);
+                    ctx.font = "60px Fredoka";
+                    ctx.fillText("🏡🌸🌻", canvas.width/2, 220);
                     canvas.onclick = () => { score++; scoreDisplay.innerText = "Score: " + score; };
                     break;
 
                 case 3: // Fruit Merge
-                    let fm = entities[0] || (entities[0] = {x: 400, y: 50, s: 3});
-                    fm.y += fm.s;
-                    if(fm.y > 380) { fm.y = 50; fm.x = Math.random()*700+50; }
-                    ctx.fillStyle = "#fab1a0"; ctx.beginPath(); ctx.arc(fm.x, fm.y, 22, 0, Math.PI*2); ctx.fill();
-                    ctx.fillStyle = "#0984e3"; ctx.fillRect(p1.x, p1.y, p1.w, p1.h);
-                    if(fm.y >= p1.y && fm.x >= p1.x && fm.x <= p1.x+p1.w) {
+                case 12: // Honey Drop
+                case 14: // Rain Catcher
+                    let item = entities[0];
+                    item.y += item.speed;
+                    if(item.y > canvas.height) { item.y = 0; item.x = Math.random()*(canvas.width-60); }
+                    if(item.y >= p1.y - 20 && item.x >= p1.x - 10 && item.x <= p1.x + 50) {
                         score += 15; scoreDisplay.innerText = "Score: " + score;
-                        fm.y = 50; fm.x = Math.random()*700+50;
+                        item.y = 0; item.x = Math.random()*(canvas.width-60); item.speed += 0.2;
                     }
+                    ctx.fillText(p1.emoji, p1.x + 25, p1.y + 10);
+                    ctx.fillText(item.emoji, item.x, item.y);
                     break;
 
                 case 4: // Garden Fishing
                     stateTimer--;
-                    ctx.fillStyle = "#0984e3"; ctx.fillRect(0, 200, canvas.width, 220);
-                    ctx.fillStyle = "#fff"; ctx.font = "24px Fredoka"; ctx.textAlign = "center";
-                    if(stateTimer > 30) {
-                        ctx.fillText("Bobber in water... Wait for a bite!", canvas.width/2, 100);
+                    ctx.fillStyle = "#0984e3"; ctx.fillRect(0, 220, canvas.width, 200);
+                    ctx.fillStyle = "#fff"; ctx.font = "24px Fredoka";
+                    if(stateTimer > 35) {
+                        ctx.fillText("🎣 Bobber in water... Wait for a bite!", canvas.width/2, 110);
+                        ctx.font = "40px Fredoka"; ctx.fillText("🌊🐟🌊", canvas.width/2, 320);
                     } else {
-                        ctx.fillStyle = "#fdcb6e"; ctx.fillText("⚡ BITE! CLICK NOW! ⚡", canvas.width/2, 100);
+                        ctx.fillStyle = "#fdcb6e"; ctx.fillText("⚡ BITE! CLICK NOW! ⚡", canvas.width/2, 110);
+                        ctx.font = "50px Fredoka"; ctx.fillText("🐟💥", canvas.width/2, 320);
                     }
-                    if(stateTimer <= 0) stateTimer = 70;
-                    canvas.onclick = () => { if(stateTimer <= 30) { score++; scoreDisplay.innerText = "Fish Caught: " + score; } };
+                    if(stateTimer <= 0) stateTimer = 75;
+                    canvas.onclick = () => { if(stateTimer <= 35) { score++; scoreDisplay.innerText = "Fish Caught: " + score; } };
                     break;
 
                 case 5: // Bomb Defusal
-                    let bomb = entities[0] || (entities[0] = {x: 380, y: 150});
-                    ctx.fillStyle = "#d63031"; ctx.beginPath(); ctx.arc(bomb.x, bomb.y, 35, 0, Math.PI*2); ctx.fill();
-                    ctx.fillStyle = "#fff"; ctx.font = "20px Fredoka"; ctx.textAlign = "center";
-                    ctx.fillText("Click bomb to defuse!", canvas.width/2, 80);
-                    canvas.onclick = () => { score += 5; scoreDisplay.innerText = "Score: " + score; bomb.x = Math.random()*600+100; bomb.y = Math.random()*250+100; };
+                    let bomb = entities[0] || (entities[0] = {x: 400, y: 200});
+                    ctx.fillStyle = "#fdcb6e"; ctx.font = "22px Fredoka";
+                    ctx.fillText("Click the bomb quickly before it explodes!", canvas.width/2, 80);
+                    ctx.font = "60px Fredoka";
+                    ctx.fillText("💣", bomb.x, bomb.y);
+                    canvas.onclick = () => { score += 5; scoreDisplay.innerText = "Score: " + score; bomb.x = Math.random()*600+100; bomb.y = Math.random()*220+120; };
                     break;
 
                 case 6: // Carrot Count
                 case 11: // Mushroom Hunt
                 case 13: // Seed Sprout
-                    ctx.fillStyle = "#fdcb6e"; ctx.font = "22px Fredoka"; ctx.textAlign = "center";
-                    ctx.fillText("Click items to collect them!", canvas.width/2, 50);
+                    ctx.fillStyle = "#fdcb6e"; ctx.font = "22px Fredoka";
+                    ctx.fillText("Click items across the garden to collect them!", canvas.width/2, 50);
                     entities.forEach(en => {
                         if(en.active) {
-                            ctx.fillStyle = activeMinigame===6 ? "#e17055" : (activeMinigame===11 ? "#6c5ce7" : "#00b894");
-                            ctx.beginPath(); ctx.arc(en.x, en.y, 18, 0, Math.PI*2); ctx.fill();
+                            ctx.font = "40px Fredoka";
+                            ctx.fillText(en.emoji, en.x, en.y);
                         }
                     });
                     canvas.onclick = (e) => {
                         let rect = canvas.getBoundingClientRect();
                         let mx = e.clientX - rect.left, my = e.clientY - rect.top;
                         entities.forEach(en => {
-                            if(en.active && Math.hypot(en.x - mx, en.y - my) < 25) {
+                            if(en.active && Math.hypot(en.x - mx, en.y - my) < 30) {
                                 en.active = false; score++; scoreDisplay.innerText = "Score: " + score;
-                                setTimeout(() => { en.active = true; en.x = Math.random()*700+50; en.y = Math.random()*300+50; }, 1000);
+                                setTimeout(() => { en.active = true; en.x = Math.random()*700+50; en.y = Math.random()*280+60; }, 900);
                             }
                         });
                     };
                     break;
 
                 case 7: // Butterfly Vote
-                    ctx.fillStyle = "#ff7675"; ctx.font = "24px Fredoka"; ctx.textAlign = "center";
-                    ctx.fillText("Vote for the prettiest butterfly! (Click sides)", canvas.width/2, 80);
-                    ctx.fillStyle = "#0984e3"; ctx.fillRect(150, 150, 200, 160);
-                    ctx.fillStyle = "#e17055"; ctx.fillRect(450, 150, 200, 160);
-                    ctx.fillStyle = "#fff"; ctx.fillText("Option A 🦋", 250, 235); ctx.fillText("Option B 🦋", 550, 235);
-                    canvas.onclick = (e) => { score++; scoreDisplay.innerText = "Votes: " + score; };
+                    ctx.fillStyle = "#ff7675"; ctx.font = "24px Fredoka";
+                    ctx.fillText("Vote for your favorite garden butterfly!", canvas.width/2, 80);
+                    ctx.font = "50px Fredoka";
+                    ctx.fillText("🦋💙", 240, 220); ctx.fillText("🦋💖", 560, 220);
+                    ctx.font = "18px Fredoka"; ctx.fillStyle = "#fff";
+                    ctx.fillText("Click Left", 240, 280); ctx.fillText("Click Right", 560, 280);
+                    canvas.onclick = () => { score++; scoreDisplay.innerText = "Votes: " + score; };
                     break;
 
                 case 8: // Sunflower Match
-                    ctx.fillStyle = "#fdcb6e"; ctx.font = "24px Fredoka"; ctx.textAlign = "center";
-                    ctx.fillText("Match blooming flowers by clicking rapidly!", canvas.width/2, 100);
-                    ctx.fillStyle = "#00b894"; ctx.fillRect(canvas.width/2 - 80, 200, 160, 60);
-                    ctx.fillStyle = "#fff"; ctx.fillText("BLOOM 🌻", canvas.width/2, 238);
+                    ctx.fillStyle = "#fdcb6e"; ctx.font = "24px Fredoka";
+                    ctx.fillText("Click rapidly to make sunflowers bloom!", canvas.width/2, 100);
+                    ctx.font = "70px Fredoka";
+                    ctx.fillText("🌻✨", canvas.width/2, 240);
                     canvas.onclick = () => { score += 2; scoreDisplay.innerText = "Score: " + score; };
                     break;
 
                 case 9: // Bee Hive Dash
-                    let bee = entities[0] || (entities[0] = {x: 50, y: 200, vy: 2});
+                    let bee = entities[0] || (entities[0] = {x: 80, y: 200, vy: 2});
                     bee.y += bee.vy;
-                    if(bee.y < 50 || bee.y > 350) bee.vy *= -1;
-                    if(keys['Space'] || keys['ArrowUp']) bee.vy = -4; else bee.vy += 0.2;
-                    ctx.fillStyle = "#fdcb6e"; ctx.beginPath(); ctx.arc(bee.x, bee.y, 16, 0, Math.PI*2); ctx.fill();
+                    if(bee.y < 60 || bee.y > 360) bee.vy *= -1;
+                    if(keys['Space'] || keys['ArrowUp']) bee.vy = -4.5; else bee.vy += 0.22;
+                    ctx.font = "40px Fredoka";
+                    ctx.fillText("🐝", bee.x, bee.y);
+                    ctx.fillText("🍯", 700, 200);
                     score++; scoreDisplay.innerText = "Score: " + Math.floor(score/10);
                     break;
 
                 case 10: // Log Chopper
-                    ctx.fillStyle = "#81ecec"; ctx.font = "24px Fredoka"; ctx.textAlign = "center";
-                    ctx.fillText("Chop the log! Click rapidly to progress.", canvas.width/2, 100);
-                    ctx.fillStyle = "#d63031"; ctx.fillRect(canvas.width/2 - 60, 180, 120, 100);
+                    ctx.fillStyle = "#81ecec"; ctx.font = "24px Fredoka";
+                    ctx.fillText("Click rapidly with your axe to chop the log!", canvas.width/2, 90);
+                    ctx.font = "70px Fredoka";
+                    ctx.fillText("🪵🪓", canvas.width/2, 230);
                     canvas.onclick = () => { score += 5; scoreDisplay.innerText = "Chops: " + score; };
                     break;
 
-                case 12: // Honey Drop
-                    let drop = entities[0] || (entities[0] = {x: Math.random()*700+50, y: 0, s: 4});
-                    drop.y += drop.s;
-                    if(drop.y > 400) { drop.y = 0; drop.x = Math.random()*700+50; }
-                    ctx.fillStyle = "#fdcb6e"; ctx.beginPath(); ctx.arc(drop.x, drop.y, 14, 0, Math.PI*2); ctx.fill();
-                    ctx.fillStyle = "#6c5ce7"; ctx.fillRect(p1.x, p1.y, p1.w, p1.h);
-                    if(drop.y >= p1.y && drop.x >= p1.x && drop.x <= p1.x+p1.w) {
-                        score += 10; scoreDisplay.innerText = "Score: " + score;
-                        drop.y = 0; drop.x = Math.random()*700+50;
-                    }
-                    break;
-
-                case 14: // Rain Catcher
-                    let cloud = entities[0] || (entities[0] = {x: Math.random()*700+50, y: 0, s: 5});
-                    cloud.y += cloud.s;
-                    if(cloud.y > 400) { cloud.y = 0; cloud.x = Math.random()*700+50; }
-                    ctx.fillStyle = "#74b9ff"; ctx.beginPath(); ctx.arc(cloud.x, cloud.y, 12, 0, Math.PI*2); ctx.fill();
-                    ctx.fillStyle = "#0984e3"; ctx.fillRect(p1.x, p1.y, p1.w, p1.h);
-                    if(cloud.y >= p1.y && cloud.x >= p1.x && cloud.x <= p1.x+p1.w) {
-                        score += 10; scoreDisplay.innerText = "Score: " + score;
-                        cloud.y = 0; cloud.x = Math.random()*700+50;
-                    }
-                    break;
-
                 case 15: // Garden Tower
-                    if(!entities[0]) entities[0] = {y: 300, vy: 0};
-                    if(keys['Space'] || keys['ArrowUp']) entities[0].vy = -8;
-                    entities[0].vy += 0.4;
+                    if(!entities[0]) entities[0] = {y: 340, vy: 0};
+                    if(keys['Space'] || keys['ArrowUp']) entities[0].vy = -8.5;
+                    entities[0].vy += 0.45;
                     entities[0].y += entities[0].vy;
-                    if(entities[0].y > 360) { entities[0].y = 360; entities[0].vy = 0; }
-                    ctx.fillStyle = "#fdcb6e"; ctx.fillRect(360, entities[0].y, 80, 30);
+                    if(entities[0].y > 340) { entities[0].y = 340; entities[0].vy = 0; }
+                    ctx.font = "45px Fredoka";
+                    ctx.fillText("🪴", 380, entities[0].y);
                     score++; scoreDisplay.innerText = "Height: " + Math.floor(score/5);
                     break;
             }
