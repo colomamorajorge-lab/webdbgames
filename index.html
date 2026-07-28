@@ -6,17 +6,17 @@
     <title>DB Games Studios Hub</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Fredoka', cursive, sans-serif;
             color: #ffffff;
             text-align: center;
             margin: 0;
             min-height: 100vh;
             overflow-x: hidden;
             position: relative;
-            background-color: #0a0a0a;
+            background-color: #0c0814;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -39,17 +39,17 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            background-color: rgba(10, 10, 10, 0.85);
+            background: linear-gradient(135deg, rgba(12, 8, 20, 0.92), rgba(26, 15, 45, 0.95));
             z-index: -1;
         }
 
         .main-container {
-            background-color: rgba(18, 18, 18, 0.95);
-            backdrop-filter: blur(15px);
+            background: rgba(22, 14, 38, 0.88);
+            backdrop-filter: blur(16px);
             padding: 40px;
-            border-radius: 24px;
-            border: 1px solid rgba(0, 255, 204, 0.2);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.9);
+            border-radius: 32px;
+            border: 3px solid #ff7675;
+            box-shadow: 0 15px 35px rgba(255, 118, 117, 0.25), inset 0 0 20px rgba(255, 255, 255, 0.05);
             max-width: 1100px;
             width: 100%;
             z-index: 1;
@@ -64,11 +64,12 @@
         }
 
         .logo-img {
-            width: 75px;
-            height: 75px;
-            border-radius: 15px;
+            width: 80px;
+            height: 80px;
+            border-radius: 22px;
             object-fit: cover;
-            box-shadow: 0 0 20px rgba(0, 255, 204, 0.4);
+            border: 3px solid #fdcb6e;
+            box-shadow: 0 0 20px rgba(253, 203, 110, 0.5);
         }
 
         .title-container {
@@ -79,22 +80,23 @@
         }
 
         .main-title, .sub-title {
-            font-size: 32px;
+            font-size: 36px;
             font-weight: 700;
-            color: #00ffcc;
+            color: #fdcb6e;
             line-height: 1.1;
-            text-shadow: 0 0 15px rgba(0, 255, 204, 0.4);
+            text-shadow: 3px 3px 0px #e17055;
         }
 
         .subtitle {
-            font-size: 15px;
-            color: #bbbbbb;
+            font-size: 16px;
+            color: #dfe6e9;
             margin-bottom: 25px;
+            font-weight: 400;
         }
 
         .button-group {
             display: flex;
-            gap: 12px;
+            gap: 15px;
             justify-content: center;
             margin-bottom: 25px;
             flex-wrap: wrap;
@@ -102,163 +104,155 @@
 
         .btn {
             border: none;
-            padding: 12px 24px;
-            font-size: 14px;
+            padding: 14px 28px;
+            font-size: 15px;
             font-weight: 600;
-            border-radius: 12px;
+            border-radius: 20px;
             cursor: pointer;
             text-decoration: none;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
+            box-shadow: 0 6px 0 rgba(0,0,0,0.3);
         }
+        .btn:active { transform: translateY(4px); box-shadow: 0 2px 0 rgba(0,0,0,0.3); }
 
         .btn-roblox {
-            background-color: #0066cc;
+            background-color: #0984e3;
             color: white;
-            box-shadow: 0 0 15px rgba(0, 102, 204, 0.4);
+            border: 2px solid #74b9ff;
         }
-        .btn-roblox:hover { background-color: #0077ff; transform: translateY(-2px); }
+        .btn-roblox:hover { background-color: #74b9ff; }
 
         .btn-web {
-            background-color: #00cc88;
+            background-color: #00b894;
             color: white;
-            box-shadow: 0 0 15px rgba(0, 204, 136, 0.4);
+            border: 2px solid #55efc4;
         }
-        .btn-web:hover { background-color: #00e699; transform: translateY(-2px); }
+        .btn-web:hover { background-color: #55efc4; color: #2d3436; }
 
-        /* SECCIÓN DE MINIJUEGOS ARCADE */
+        /* SECCIÓN DE MINIJUEGOS CARTOON */
         .arcade-section {
             margin-top: 35px;
             text-align: left;
         }
 
         .arcade-title {
-            font-size: 24px;
-            color: #00ffcc;
+            font-size: 26px;
+            color: #fdcb6e;
             margin-bottom: 20px;
             font-weight: 700;
-            text-shadow: 0 0 10px rgba(0, 255, 204, 0.3);
+            text-shadow: 2px 2px 0px #d63031;
             text-align: center;
         }
 
         .games-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
-            gap: 20px;
+            gap: 22px;
         }
 
         .game-card {
-            background-color: rgba(28, 28, 28, 0.9);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 20px 15px;
+            background: linear-gradient(145deg, #2d1b4e, #1a0f30);
+            border: 3px solid #6c5ce7;
+            border-radius: 24px;
+            padding: 22px 15px;
             text-align: center;
-            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
             cursor: pointer;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            box-shadow: 0 8px 0 rgba(0,0,0,0.4);
         }
 
         .game-card:hover {
-            transform: translateY(-6px);
-            border-color: #00ffcc;
-            box-shadow: 0 8px 25px rgba(0, 255, 204, 0.25);
+            transform: translateY(-8px);
+            border-color: #fdcb6e;
+            box-shadow: 0 12px 0 rgba(0,0,0,0.4), 0 0 20px rgba(253, 203, 110, 0.4);
         }
 
         .game-icon {
-            font-size: 42px;
+            font-size: 48px;
             margin-bottom: 12px;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.5));
         }
 
         .game-name {
-            font-size: 16px;
+            font-size: 17px;
             font-weight: 600;
             color: #ffffff;
             margin-bottom: 15px;
         }
 
         .game-btn {
-            background-color: #00cc88;
+            background-color: #ff7675;
             color: white;
-            border: none;
-            padding: 9px 14px;
-            border-radius: 10px;
+            border: 2px solid #fab1a0;
+            padding: 10px 14px;
+            border-radius: 16px;
             font-weight: 600;
-            font-size: 13px;
+            font-size: 14px;
             cursor: pointer;
             transition: background 0.2s;
             text-decoration: none;
+            box-shadow: 0 4px 0 rgba(0,0,0,0.2);
         }
 
         .game-card:hover .game-btn {
-            background-color: #00ffcc;
-            color: #0a0a0a;
+            background-color: #fdcb6e;
+            color: #2d3436;
+            border-color: #ffeaa7;
         }
 
-        .game-card.soon {
-            opacity: 0.5;
-            border-style: dashed;
-        }
-        .game-card.soon:hover {
-            transform: none;
-            border-color: rgba(255, 255, 255, 0.1);
-            box-shadow: none;
-        }
-        .game-card.soon .game-btn {
-            background-color: #2a2a2a;
-            color: #888888;
-            cursor: default;
-        }
-
-        /* PANTALLA DE JUEGO GRANDE Y PROFESIONAL */
+        /* PANTALLA DE JUEGO GRANDE */
         #game-screen {
             display: none;
-            background: rgba(12, 12, 12, 0.98);
-            border: 2px solid #00ffcc;
-            border-radius: 20px;
+            background: rgba(18, 10, 30, 0.98);
+            border: 4px solid #fdcb6e;
+            border-radius: 28px;
             padding: 30px;
             margin-top: 10px;
             text-align: center;
-            box-shadow: 0 0 30px rgba(0, 255, 204, 0.3);
+            box-shadow: 0 0 40px rgba(253, 203, 110, 0.4);
         }
 
         .game-hud {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 20px;
-            font-weight: bold;
-            color: #00ffcc;
+            font-size: 22px;
+            font-weight: 700;
+            color: #fdcb6e;
             margin-bottom: 15px;
             padding: 0 10px;
+            text-shadow: 2px 2px 0px #000;
         }
 
         #game-canvas {
-            background: radial-gradient(circle, #152820 0%, #0a110e 100%);
-            border: 3px solid rgba(0, 255, 204, 0.5);
-            border-radius: 14px;
+            background: radial-gradient(circle, #2d3436 0%, #1e272c 100%);
+            border: 4px solid #6c5ce7;
+            border-radius: 20px;
             display: block;
             margin: 0 auto 20px auto;
             max-width: 100%;
-            box-shadow: inset 0 0 20px rgba(0,0,0,0.8);
+            box-shadow: inset 0 0 25px rgba(0,0,0,0.9);
         }
 
         .back-arcade-btn {
-            background-color: #ff4757;
+            background-color: #ff7675;
             color: white;
-            border: none;
-            padding: 12px 28px;
-            border-radius: 12px;
-            font-weight: 600;
-            font-size: 15px;
+            border: 3px solid #fab1a0;
+            padding: 12px 30px;
+            border-radius: 18px;
+            font-weight: 700;
+            font-size: 16px;
             cursor: pointer;
-            transition: background 0.2s, transform 0.2s;
-            box-shadow: 0 0 15px rgba(255, 71, 87, 0.4);
+            transition: transform 0.2s;
+            box-shadow: 0 6px 0 rgba(0,0,0,0.3);
         }
-        .back-arcade-btn:hover { background-color: #ff6b81; transform: translateY(-2px); }
+        .back-arcade-btn:hover { background-color: #d63031; transform: translateY(-2px); }
 
         .social-group {
             display: flex;
@@ -268,25 +262,26 @@
         }
 
         .social-icon {
-            width: 42px;
-            height: 42px;
+            width: 48px;
+            height: 48px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: #2a2a2a;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background-color: #2d1b4e;
+            border: 2px solid #6c5ce7;
             color: white;
             text-decoration: none;
             transition: transform 0.2s, background-color 0.2s;
+            box-shadow: 0 4px 0 rgba(0,0,0,0.3);
         }
-        .social-icon:hover { transform: translateY(-3px); background-color: #3a3a3a; }
-        .social-icon.discord { background-color: #5865F2; border: none; }
-        .social-icon.x { background-color: #000000; border: 1px solid rgba(255,255,255,0.2); }
+        .social-icon:hover { transform: translateY(-4px); background-color: #6c5ce7; }
+        .social-icon.discord { background-color: #5865F2; border-color: #7983f5; }
+        .social-icon.x { background-color: #222; border-color: #555; }
 
         .divider {
-            height: 1px;
-            background-color: rgba(255, 255, 255, 0.1);
+            height: 2px;
+            background: linear-gradient(to right, transparent, rgba(255,255,255,0.2), transparent);
             margin: 25px 0;
         }
 
@@ -304,14 +299,14 @@
         }
 
         .stat-number {
-            font-size: 28px;
+            font-size: 30px;
             font-weight: 700;
-            color: #00ffcc;
-            text-shadow: 0 0 10px rgba(0, 255, 204, 0.3);
+            color: #00b894;
+            text-shadow: 2px 2px 0px #000;
             margin-bottom: 5px;
         }
 
-        .stat-text { font-size: 13px; color: #aaaaaa; }
+        .stat-text { font-size: 14px; color: #b2bec3; font-weight: 600; }
     </style>
 </head>
 <body>
@@ -344,125 +339,44 @@
 
         <div class="social-group">
             <a href="https://discord.com" target="_blank" class="social-icon discord" title="Discord">
-                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994.021-.041.001-.09-.041-.106a13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.927 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+                <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994.021-.041.001-.09-.041-.106a13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.927 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
             </a>
             <a href="https://twitter.com" target="_blank" class="social-icon x" title="X (Twitter)">
-                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
             </a>
         </div>
 
         <div class="divider"></div>
 
-        <!-- PANTALLA DE JUEGO INTERACTIVO GRANDE -->
+        <!-- PANTALLA DE JUEGO GRANDE -->
         <div id="game-screen">
             <div class="game-hud">
                 <span id="game-title-hud">🎮 Minigame</span>
                 <span id="game-score">Score: 0</span>
             </div>
-            <canvas id="game-canvas" width="800" height="450"></canvas>
+            <canvas id="game-canvas" width="800" height="420"></canvas>
             <button class="back-arcade-btn" onclick="closeGame()">⬅ Back to Arcade</button>
         </div>
 
-        <!-- SECCIÓN DE LOS 15 JUEGOS -->
+        <!-- SECCIÓN DE LOS 15 JUEGOS COMPLETOS -->
         <div class="arcade-section" id="arcade-hub">
             <div class="arcade-title">🎮 Garden Arcade - Minigames Hub (15 Games)</div>
             <div class="games-grid">
-                <!-- Juego 1: Fruit Grab (Jugable) -->
-                <div class="game-card" onclick="startFruitGrab()">
-                    <div class="game-icon">🦊</div>
-                    <div class="game-name">Fruit Grab</div>
-                    <button class="game-btn">Play Now</button>
-                </div>
-                <!-- Juego 2 -->
-                <div class="game-card">
-                    <div class="game-icon">⚔️</div>
-                    <div class="game-name">Rate My Garden</div>
-                    <a href="#" class="game-btn">Play Now</a>
-                </div>
-                <!-- Juego 3 -->
-                <div class="game-card">
-                    <div class="game-icon">🍇</div>
-                    <div class="game-name">Fruit Merge</div>
-                    <a href="#" class="game-btn">Play Now</a>
-                </div>
-                <!-- Juego 4: Garden Fishing (Jugable) -->
-                <div class="game-card" onclick="startFishing()">
-                    <div class="game-icon">🎣</div>
-                    <div class="game-name">Garden Fishing</div>
-                    <button class="game-btn">Play Now</button>
-                </div>
-                <!-- Juego 5 -->
-                <div class="game-card">
-                    <div class="game-icon">💣</div>
-                    <div class="game-name">Bomb Defusal</div>
-                    <a href="#" class="game-btn">Play Now</a>
-                </div>
-                <!-- Juego 6 -->
-                <div class="game-card">
-                    <div class="game-icon">🥕</div>
-                    <div class="game-name">Carrot Count</div>
-                    <a href="#" class="game-btn">Play Now</a>
-                </div>
-                <!-- Juego 7 -->
-                <div class="game-card">
-                    <div class="game-icon">🦋</div>
-                    <div class="game-name">Butterfly Vote</div>
-                    <a href="#" class="game-btn">Play Now</a>
-                </div>
-                <!-- Juego 8 -->
-                <div class="game-card">
-                    <div class="game-icon">🌻</div>
-                    <div class="game-name">Sunflower Match</div>
-                    <a href="#" class="game-btn">Play Now</a>
-                </div>
-                <!-- Juego 9 -->
-                <div class="game-card">
-                    <div class="game-icon">🐝</div>
-                    <div class="game-name">Bee Hive Dash</div>
-                    <a href="#" class="game-btn">Play Now</a>
-                </div>
-                <!-- Juego 10 -->
-                <div class="game-card">
-                    <div class="game-icon">🪵</div>
-                    <div class="game-name">Log Chopper</div>
-                    <a href="#" class="game-btn">Play Now</a>
-                </div>
-                <!-- Juego 11 -->
-                <div class="game-card">
-                    <div class="game-icon">🍄</div>
-                    <div class="game-name">Mushroom Hunt</div>
-                    <a href="#" class="game-btn">Play Now</a>
-                </div>
-                <!-- Juego 12 -->
-                <div class="game-card">
-                    <div class="game-icon">🍯</div>
-                    <div class="game-name">Honey Drop</div>
-                    <a href="#" class="game-btn">Play Now</a>
-                </div>
-                <!-- Juego 13 -->
-                <div class="game-card">
-                    <div class="game-icon">🌱</div>
-                    <div class="game-name">Seed Sprout</div>
-                    <a href="#" class="game-btn">Play Now</a>
-                </div>
-                <!-- Juego 14 -->
-                <div class="game-card">
-                    <div class="game-icon">🌧️</div>
-                    <div class="game-name">Rain Catcher</div>
-                    <a href="#" class="game-btn">Play Now</a>
-                </div>
-                <!-- Juego 15 -->
-                <div class="game-card">
-                    <div class="game-icon">🏆</div>
-                    <div class="game-name">Garden Tower</div>
-                    <a href="#" class="game-btn">Play Now</a>
-                </div>
-                <!-- COMING SOON -->
-                <div class="game-card soon">
-                    <div class="game-icon">❓</div>
-                    <div class="game-name">Coming Soon</div>
-                    <button class="game-btn">Locked</button>
-                </div>
+                <div class="game-card" onclick="launchGame(1)"><div class="game-icon">🦊</div><div class="game-name">Fruit Grab</div><button class="game-btn">Play Now</button></div>
+                <div class="game-card" onclick="launchGame(2)"><div class="game-icon">⚔️</div><div class="game-name">Rate My Garden</div><button class="game-btn">Play Now</button></div>
+                <div class="game-card" onclick="launchGame(3)"><div class="game-icon">🍇</div><div class="game-name">Fruit Merge</div><button class="game-btn">Play Now</button></div>
+                <div class="game-card" onclick="launchGame(4)"><div class="game-icon">🎣</div><div class="game-name">Garden Fishing</div><button class="game-btn">Play Now</button></div>
+                <div class="game-card" onclick="launchGame(5)"><div class="game-icon">💣</div><div class="game-name">Bomb Defusal</div><button class="game-btn">Play Now</button></div>
+                <div class="game-card" onclick="launchGame(6)"><div class="game-icon">🥕</div><div class="game-name">Carrot Count</div><button class="game-btn">Play Now</button></div>
+                <div class="game-card" onclick="launchGame(7)"><div class="game-icon">🦋</div><div class="game-name">Butterfly Vote</div><button class="game-btn">Play Now</button></div>
+                <div class="game-card" onclick="launchGame(8)"><div class="game-icon">🌻</div><div class="game-name">Sunflower Match</div><button class="game-btn">Play Now</button></div>
+                <div class="game-card" onclick="launchGame(9)"><div class="game-icon">🐝</div><div class="game-name">Bee Hive Dash</div><button class="game-btn">Play Now</button></div>
+                <div class="game-card" onclick="launchGame(10)"><div class="game-icon">🪵</div><div class="game-name">Log Chopper</div><button class="game-btn">Play Now</button></div>
+                <div class="game-card" onclick="launchGame(11)"><div class="game-icon">🍄</div><div class="game-name">Mushroom Hunt</div><button class="game-btn">Play Now</button></div>
+                <div class="game-card" onclick="launchGame(12)"><div class="game-icon">🍯</div><div class="game-name">Honey Drop</div><button class="game-btn">Play Now</button></div>
+                <div class="game-card" onclick="launchGame(13)"><div class="game-icon">🌱</div><div class="game-name">Seed Sprout</div><button class="game-btn">Play Now</button></div>
+                <div class="game-card" onclick="launchGame(14)"><div class="game-icon">🌧️</div><div class="game-name">Rain Catcher</div><button class="game-btn">Play Now</button></div>
+                <div class="game-card" onclick="launchGame(15)"><div class="game-icon">🏆</div><div class="game-name">Garden Tower</div><button class="game-btn">Play Now</button></div>
             </div>
         </div>
 
@@ -480,7 +394,7 @@
         </div>
     </div>
 
-    <!-- SCRIPTS DE LOS MINIJUEGOS -->
+    <!-- MOTOR DE JUEGOS ARCADE -->
     <script>
         const arcadeHub = document.getElementById('arcade-hub');
         const gameScreen = document.getElementById('game-screen');
@@ -489,137 +403,206 @@
         const scoreDisplay = document.getElementById('game-score');
         const titleHud = document.getElementById('game-title-hud');
 
-        let gameInterval = null;
+        let gameLoop = null;
         let score = 0;
         let keys = {};
+        let activeMinigame = 0;
 
         window.addEventListener('keydown', e => keys[e.code] = true);
         window.addEventListener('keyup', e => keys[e.code] = false);
 
         function closeGame() {
-            clearInterval(gameInterval);
+            clearInterval(gameLoop);
             gameScreen.style.display = 'none';
             arcadeHub.style.display = 'block';
+            canvas.onclick = null;
         }
 
-        // --- JUEGO 1: FRUIT GRAB ---
-        let player = { x: 370, y: 390, width: 80, height: 32, color: '#00ffcc' };
-        let fruit = { x: Math.random() * 750, y: 0, radius: 18, speed: 4 };
+        const gameNames = [
+            "", "Fruit Grab", "Rate My Garden", "Fruit Merge", "Garden Fishing", 
+            "Bomb Defusal", "Carrot Count", "Butterfly Vote", "Sunflower Match", 
+            "Bee Hive Dash", "Log Chopper", "Mushroom Hunt", "Honey Drop", 
+            "Seed Sprout", "Rain Catcher", "Garden Tower"
+        ];
 
-        function startFruitGrab() {
+        let p1 = {x: 360, y: 360, w: 80, h: 25};
+        let entities = [];
+        let stateTimer = 0;
+
+        function launchGame(id) {
+            activeMinigame = id;
             arcadeHub.style.display = 'none';
             gameScreen.style.display = 'block';
-            titleHud.innerText = "🎮 Fruit Grab";
+            titleHud.innerText = "🎮 " + gameNames[id];
             score = 0;
             scoreDisplay.innerText = "Score: " + score;
-            
-            if(gameInterval) clearInterval(gameInterval);
-            gameInterval = setInterval(updateFruitGrab, 1000 / 60);
+            canvas.onclick = null;
+
+            if(gameLoop) clearInterval(gameLoop);
+            initMinigameState();
+            gameLoop = setInterval(updateMinigame, 1000 / 60);
         }
 
-        function updateFruitGrab() {
-            if ((keys['ArrowLeft'] || keys['KeyA']) && player.x > 0) player.x -= 8;
-            if ((keys['ArrowRight'] || keys['KeyD']) && player.x < canvas.width - player.width) player.x += 8;
-
-            fruit.y += fruit.speed;
-            if (fruit.y > canvas.height) {
-                fruit.y = 0;
-                fruit.x = Math.random() * (canvas.width - 40);
-            }
-
-            if (fruit.y + fruit.radius >= player.y && fruit.x >= player.x && fruit.x <= player.x + player.width) {
-                score += 10;
-                scoreDisplay.innerText = "Score: " + score;
-                fruit.y = 0;
-                fruit.x = Math.random() * (canvas.width - 40);
-                fruit.speed += 0.15;
-            }
-
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
-            // Dibujar jugador
-            ctx.fillStyle = player.color;
-            ctx.shadowBlur = 15;
-            ctx.shadowColor = '#00ffcc';
-            ctx.fillRect(player.x, player.y, player.width, player.height);
-            ctx.shadowBlur = 0;
-
-            // Dibujar fruta
-            ctx.fillStyle = '#ff4757';
-            ctx.shadowBlur = 15;
-            ctx.shadowColor = '#ff4757';
-            ctx.beginPath();
-            ctx.arc(fruit.x, fruit.y, fruit.radius, 0, Math.PI * 2);
-            ctx.fill();
-            ctx.closePath();
-            ctx.shadowBlur = 0;
-        }
-
-        // --- JUEGO 4: GARDEN FISHING (PESCA) ---
-        let fishState = "waiting"; 
-        let fishTimer = 0;
-
-        function startFishing() {
-            arcadeHub.style.display = 'none';
-            gameScreen.style.display = 'block';
-            titleHud.innerText = "🎣 Garden Fishing (Click to Fish!)";
-            score = 0;
-            scoreDisplay.innerText = "Fish Caught: " + score;
-            fishState = "waiting";
-            fishTimer = Math.floor(Math.random() * 80) + 50;
-
-            if(gameInterval) clearInterval(gameInterval);
-            gameInterval = setInterval(updateFishing, 1000 / 60);
-
-            canvas.onclick = handleFishingClick;
-        }
-
-        function handleFishingClick() {
-            if (fishState === "biting") {
-                score += 1;
-                scoreDisplay.innerText = "Fish Caught: " + score;
-                fishState = "waiting";
-                fishTimer = Math.floor(Math.random() * 80) + 50;
-            } else if (fishState === "waiting") {
-                score = Math.max(0, score - 1);
-                scoreDisplay.innerText = "Fish Caught: " + score;
+        function initMinigameState() {
+            entities = [];
+            if(activeMinigame === 1) {
+                entities = [{x: Math.random()*750, y: 0, r: 16, speed: 4}];
+            } else if(activeMinigame === 4 || activeMinigame === 7) {
+                stateTimer = 50;
+            } else if(activeMinigame === 6 || activeMinigame === 11 || activeMinigame === 13) {
+                for(let i=0; i<5; i++) entities.push({x: Math.random()*700+50, y: Math.random()*300+50, active: true});
             }
         }
 
-        function updateFishing() {
+        function updateMinigame() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-            // Estanque grande
-            ctx.fillStyle = '#093a5e';
-            ctx.fillRect(0, 240, canvas.width, 210);
+            if ((keys['ArrowLeft'] || keys['KeyA']) && p1.x > 0) p1.x -= 7;
+            if ((keys['ArrowRight'] || keys['KeyD']) && p1.x < canvas.width - p1.w) p1.x += 7;
 
-            if (fishState === "waiting") {
-                fishTimer--;
-                if (fishTimer <= 0) {
-                    fishState = "biting";
-                    fishTimer = 45; 
-                }
-            } else if (fishState === "biting") {
-                fishTimer--;
-                if (fishTimer <= 0) {
-                    fishState = "waiting"; 
-                    fishTimer = Math.floor(Math.random() * 80) + 50;
-                }
-            }
+            switch(activeMinigame) {
+                case 1: // Fruit Grab
+                    let f = entities[0];
+                    f.y += f.speed;
+                    if(f.y > canvas.height) { f.y = 0; f.x = Math.random()*(canvas.width-40); }
+                    if(f.y + f.r >= p1.y && f.x >= p1.x && f.x <= p1.x + p1.w) {
+                        score += 10; scoreDisplay.innerText = "Score: " + score;
+                        f.y = 0; f.x = Math.random()*(canvas.width-40); f.speed += 0.2;
+                    }
+                    ctx.fillStyle = '#00b894'; ctx.fillRect(p1.x, p1.y, p1.w, p1.h);
+                    ctx.fillStyle = '#ff7675'; ctx.beginPath(); ctx.arc(f.x, f.y, f.r, 0, Math.PI*2); ctx.fill();
+                    break;
 
-            ctx.fillStyle = "#ffffff";
-            ctx.font = "22px Poppins";
-            ctx.textAlign = "center";
-            
-            if (fishState === "waiting") {
-                ctx.fillText("Bobber in water... Wait for a bite!", canvas.width / 2, 120);
-                ctx.fillStyle = "#00ffcc";
-                ctx.fillRect(canvas.width / 2 - 4, 210, 8, 40);
-            } else if (fishState === "biting") {
-                ctx.fillStyle = "#ffcc00";
-                ctx.font = "bold 30px Poppins";
-                ctx.fillText("⚡ BITE! CLICK NOW! ⚡", canvas.width / 2, 120);
-                ctx.fillRect(canvas.width / 2 - 4, 210, 8, 40);
+                case 2: // Rate My Garden
+                    ctx.fillStyle = "#fdcb6e"; ctx.font = "26px Fredoka"; ctx.textAlign = "center";
+                    ctx.fillText("Click as fast as you can to rate flowers!", canvas.width/2, 100);
+                    ctx.fillStyle = "#ff7675"; ctx.fillRect(canvas.width/2 - 70, 180, 140, 60);
+                    ctx.fillStyle = "#fff"; ctx.fillText("RATE ⭐", canvas.width/2, 218);
+                    canvas.onclick = () => { score++; scoreDisplay.innerText = "Score: " + score; };
+                    break;
+
+                case 3: // Fruit Merge
+                    let fm = entities[0] || (entities[0] = {x: 400, y: 50, s: 3});
+                    fm.y += fm.s;
+                    if(fm.y > 380) { fm.y = 50; fm.x = Math.random()*700+50; }
+                    ctx.fillStyle = "#fab1a0"; ctx.beginPath(); ctx.arc(fm.x, fm.y, 22, 0, Math.PI*2); ctx.fill();
+                    ctx.fillStyle = "#0984e3"; ctx.fillRect(p1.x, p1.y, p1.w, p1.h);
+                    if(fm.y >= p1.y && fm.x >= p1.x && fm.x <= p1.x+p1.w) {
+                        score += 15; scoreDisplay.innerText = "Score: " + score;
+                        fm.y = 50; fm.x = Math.random()*700+50;
+                    }
+                    break;
+
+                case 4: // Garden Fishing
+                    stateTimer--;
+                    ctx.fillStyle = "#0984e3"; ctx.fillRect(0, 200, canvas.width, 220);
+                    ctx.fillStyle = "#fff"; ctx.font = "24px Fredoka"; ctx.textAlign = "center";
+                    if(stateTimer > 30) {
+                        ctx.fillText("Bobber in water... Wait for a bite!", canvas.width/2, 100);
+                    } else {
+                        ctx.fillStyle = "#fdcb6e"; ctx.fillText("⚡ BITE! CLICK NOW! ⚡", canvas.width/2, 100);
+                    }
+                    if(stateTimer <= 0) stateTimer = 70;
+                    canvas.onclick = () => { if(stateTimer <= 30) { score++; scoreDisplay.innerText = "Fish Caught: " + score; } };
+                    break;
+
+                case 5: // Bomb Defusal
+                    let bomb = entities[0] || (entities[0] = {x: 380, y: 150});
+                    ctx.fillStyle = "#d63031"; ctx.beginPath(); ctx.arc(bomb.x, bomb.y, 35, 0, Math.PI*2); ctx.fill();
+                    ctx.fillStyle = "#fff"; ctx.font = "20px Fredoka"; ctx.textAlign = "center";
+                    ctx.fillText("Click bomb to defuse!", canvas.width/2, 80);
+                    canvas.onclick = () => { score += 5; scoreDisplay.innerText = "Score: " + score; bomb.x = Math.random()*600+100; bomb.y = Math.random()*250+100; };
+                    break;
+
+                case 6: // Carrot Count
+                case 11: // Mushroom Hunt
+                case 13: // Seed Sprout
+                    ctx.fillStyle = "#fdcb6e"; ctx.font = "22px Fredoka"; ctx.textAlign = "center";
+                    ctx.fillText("Click items to collect them!", canvas.width/2, 50);
+                    entities.forEach(en => {
+                        if(en.active) {
+                            ctx.fillStyle = activeMinigame===6 ? "#e17055" : (activeMinigame===11 ? "#6c5ce7" : "#00b894");
+                            ctx.beginPath(); ctx.arc(en.x, en.y, 18, 0, Math.PI*2); ctx.fill();
+                        }
+                    });
+                    canvas.onclick = (e) => {
+                        let rect = canvas.getBoundingClientRect();
+                        let mx = e.clientX - rect.left, my = e.clientY - rect.top;
+                        entities.forEach(en => {
+                            if(en.active && Math.hypot(en.x - mx, en.y - my) < 25) {
+                                en.active = false; score++; scoreDisplay.innerText = "Score: " + score;
+                                setTimeout(() => { en.active = true; en.x = Math.random()*700+50; en.y = Math.random()*300+50; }, 1000);
+                            }
+                        });
+                    };
+                    break;
+
+                case 7: // Butterfly Vote
+                    ctx.fillStyle = "#ff7675"; ctx.font = "24px Fredoka"; ctx.textAlign = "center";
+                    ctx.fillText("Vote for the prettiest butterfly! (Click sides)", canvas.width/2, 80);
+                    ctx.fillStyle = "#0984e3"; ctx.fillRect(150, 150, 200, 160);
+                    ctx.fillStyle = "#e17055"; ctx.fillRect(450, 150, 200, 160);
+                    ctx.fillStyle = "#fff"; ctx.fillText("Option A 🦋", 250, 235); ctx.fillText("Option B 🦋", 550, 235);
+                    canvas.onclick = (e) => { score++; scoreDisplay.innerText = "Votes: " + score; };
+                    break;
+
+                case 8: // Sunflower Match
+                    ctx.fillStyle = "#fdcb6e"; ctx.font = "24px Fredoka"; ctx.textAlign = "center";
+                    ctx.fillText("Match blooming flowers by clicking rapidly!", canvas.width/2, 100);
+                    ctx.fillStyle = "#00b894"; ctx.fillRect(canvas.width/2 - 80, 200, 160, 60);
+                    ctx.fillStyle = "#fff"; ctx.fillText("BLOOM 🌻", canvas.width/2, 238);
+                    canvas.onclick = () => { score += 2; scoreDisplay.innerText = "Score: " + score; };
+                    break;
+
+                case 9: // Bee Hive Dash
+                    let bee = entities[0] || (entities[0] = {x: 50, y: 200, vy: 2});
+                    bee.y += bee.vy;
+                    if(bee.y < 50 || bee.y > 350) bee.vy *= -1;
+                    if(keys['Space'] || keys['ArrowUp']) bee.vy = -4; else bee.vy += 0.2;
+                    ctx.fillStyle = "#fdcb6e"; ctx.beginPath(); ctx.arc(bee.x, bee.y, 16, 0, Math.PI*2); ctx.fill();
+                    score++; scoreDisplay.innerText = "Score: " + Math.floor(score/10);
+                    break;
+
+                case 10: // Log Chopper
+                    ctx.fillStyle = "#81ecec"; ctx.font = "24px Fredoka"; ctx.textAlign = "center";
+                    ctx.fillText("Chop the log! Click rapidly to progress.", canvas.width/2, 100);
+                    ctx.fillStyle = "#d63031"; ctx.fillRect(canvas.width/2 - 60, 180, 120, 100);
+                    canvas.onclick = () => { score += 5; scoreDisplay.innerText = "Chops: " + score; };
+                    break;
+
+                case 12: // Honey Drop
+                    let drop = entities[0] || (entities[0] = {x: Math.random()*700+50, y: 0, s: 4});
+                    drop.y += drop.s;
+                    if(drop.y > 400) { drop.y = 0; drop.x = Math.random()*700+50; }
+                    ctx.fillStyle = "#fdcb6e"; ctx.beginPath(); ctx.arc(drop.x, drop.y, 14, 0, Math.PI*2); ctx.fill();
+                    ctx.fillStyle = "#6c5ce7"; ctx.fillRect(p1.x, p1.y, p1.w, p1.h);
+                    if(drop.y >= p1.y && drop.x >= p1.x && drop.x <= p1.x+p1.w) {
+                        score += 10; scoreDisplay.innerText = "Score: " + score;
+                        drop.y = 0; drop.x = Math.random()*700+50;
+                    }
+                    break;
+
+                case 14: // Rain Catcher
+                    let cloud = entities[0] || (entities[0] = {x: Math.random()*700+50, y: 0, s: 5});
+                    cloud.y += cloud.s;
+                    if(cloud.y > 400) { cloud.y = 0; cloud.x = Math.random()*700+50; }
+                    ctx.fillStyle = "#74b9ff"; ctx.beginPath(); ctx.arc(cloud.x, cloud.y, 12, 0, Math.PI*2); ctx.fill();
+                    ctx.fillStyle = "#0984e3"; ctx.fillRect(p1.x, p1.y, p1.w, p1.h);
+                    if(cloud.y >= p1.y && cloud.x >= p1.x && cloud.x <= p1.x+p1.w) {
+                        score += 10; scoreDisplay.innerText = "Score: " + score;
+                        cloud.y = 0; cloud.x = Math.random()*700+50;
+                    }
+                    break;
+
+                case 15: // Garden Tower
+                    if(!entities[0]) entities[0] = {y: 300, vy: 0};
+                    if(keys['Space'] || keys['ArrowUp']) entities[0].vy = -8;
+                    entities[0].vy += 0.4;
+                    entities[0].y += entities[0].vy;
+                    if(entities[0].y > 360) { entities[0].y = 360; entities[0].vy = 0; }
+                    ctx.fillStyle = "#fdcb6e"; ctx.fillRect(360, entities[0].y, 80, 30);
+                    score++; scoreDisplay.innerText = "Height: " + Math.floor(score/5);
+                    break;
             }
         }
     </script>
