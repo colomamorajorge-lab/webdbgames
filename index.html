@@ -348,10 +348,10 @@
 
         <div class="divider"></div>
 
-        <!-- PANTALLA DE JUEGO INTERACTIVO (OCULTA HASTA QUE SE PULSA UN JUEGO) -->
+        <!-- PANTALLA DE JUEGO INTERACTIVO -->
         <div id="game-screen">
             <div class="game-hud">
-                <span id="game-title-hud">🎮 Fruit Grab</span>
+                <span id="game-title-hud">🎮 Minigame</span>
                 <span id="game-score">Score: 0</span>
             </div>
             <canvas id="game-canvas" width="600" height="400"></canvas>
@@ -362,7 +362,7 @@
         <div class="arcade-section" id="arcade-hub">
             <div class="arcade-title">🎮 Garden Arcade - Minigames Hub (15 Games)</div>
             <div class="games-grid">
-                <!-- Juego 1: JUGABLE -->
+                <!-- Juego 1: Fruit Grab (Jugable) -->
                 <div class="game-card" onclick="startFruitGrab()">
                     <div class="game-icon">🦊</div>
                     <div class="game-name">Fruit Grab</div>
@@ -380,13 +380,13 @@
                     <div class="game-name">Fruit Merge</div>
                     <a href="#" class="game-btn">Play Now</a>
                 </div>
-                <!-- Juego 4: PESCAR -->
-                <div class="game-card">
+                <!-- Juego 4: Garden Fishing (Jugable) -->
+                <div class="game-card" onclick="startFishing()">
                     <div class="game-icon">🎣</div>
                     <div class="game-name">Garden Fishing</div>
-                    <a href="#" class="game-btn">Play Now</a>
+                    <button class="game-btn">Play Now</button>
                 </div>
-                <!-- Juego 5: BOMBAS -->
+                <!-- Juego 5: Bomb Defusal -->
                 <div class="game-card">
                     <div class="game-icon">💣</div>
                     <div class="game-name">Bomb Defusal</div>
@@ -475,33 +475,21 @@
         </div>
     </div>
 
-    <!-- SCRIPT DEL JUEGO INTERACTIVO -->
+    <!-- SCRIPTS DE LOS MINIJUEGOS -->
     <script>
         const arcadeHub = document.getElementById('arcade-hub');
         const gameScreen = document.getElementById('game-screen');
         const canvas = document.getElementById('game-canvas');
         const ctx = canvas.getContext('2d');
         const scoreDisplay = document.getElementById('game-score');
+        const titleHud = document.getElementById('game-title-hud');
 
         let gameInterval = null;
         let score = 0;
-        let player = { x: 270, y: 350, width: 60, height: 30, color: '#00ffcc' };
-        let fruit = { x: Math.random() * 550, y: 0, radius: 15, speed: 3 };
         let keys = {};
 
-        // Escuchar teclado para mover el personaje
         window.addEventListener('keydown', e => keys[e.code] = true);
         window.addEventListener('keyup', e => keys[e.code] = false);
-
-        function startFruitGrab() {
-            arcadeHub.style.display = 'none';
-            gameScreen.style.display = 'block';
-            score = 0;
-            scoreDisplay.innerText = "Score: " + score;
-            
-            if(gameInterval) clearInterval(gameInterval);
-            gameInterval = setInterval(updateGame, 1000 / 60);
-        }
 
         function closeGame() {
             clearInterval(gameInterval);
@@ -509,44 +497,119 @@
             arcadeHub.style.display = 'block';
         }
 
-        function updateGame() {
-            // Movimiento del jugador
+        // --- JUEGO 1: FRUIT GRAB ---
+        let player = { x: 270, y: 350, width: 60, height: 30, color: '#00ffcc' };
+        let fruit = { x: Math.random() * 550, y: 0, radius: 15, speed: 3 };
+
+        function startFruitGrab() {
+            arcadeHub.style.display = 'none';
+            gameScreen.style.display = 'block';
+            titleHud.innerText = "🎮 Fruit Grab";
+            score = 0;
+            scoreDisplay.innerText = "Score: " + score;
+            
+            if(gameInterval) clearInterval(gameInterval);
+            gameInterval = setInterval(updateFruitGrab, 1000 / 60);
+        }
+
+        function updateFruitGrab() {
             if ((keys['ArrowLeft'] || keys['KeyA']) && player.x > 0) player.x -= 6;
             if ((keys['ArrowRight'] || keys['KeyD']) && player.x < canvas.width - player.width) player.x += 6;
 
-            // Caída de la fruta
             fruit.y += fruit.speed;
             if (fruit.y > canvas.height) {
                 fruit.y = 0;
                 fruit.x = Math.random() * (canvas.width - 30);
             }
 
-            // Colisión (atrapar fruta)
-            if (
-                fruit.y + fruit.radius >= player.y &&
-                fruit.x >= player.x &&
-                fruit.x <= player.x + player.width
-            ) {
+            if (fruit.y + fruit.radius >= player.y && fruit.x >= player.x && fruit.x <= player.x + player.width) {
                 score += 10;
                 scoreDisplay.innerText = "Score: " + score;
                 fruit.y = 0;
                 fruit.x = Math.random() * (canvas.width - 30);
-                fruit.speed += 0.1; // Aumenta dificultad
+                fruit.speed += 0.1;
             }
 
-            // Dibujar gráficos en pantalla
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-            // Dibujar jugador
             ctx.fillStyle = player.color;
             ctx.fillRect(player.x, player.y, player.width, player.height);
 
-            // Dibujar fruta
             ctx.fillStyle = '#ff4444';
             ctx.beginPath();
             ctx.arc(fruit.x, fruit.y, fruit.radius, 0, Math.PI * 2);
             ctx.fill();
             ctx.closePath();
+        }
+
+        // --- JUEGO 4: GARDEN FISHING (PESCA) ---
+        let fishState = "waiting"; // waiting, biting, caught
+        let fishTimer = 0;
+
+        function startFishing() {
+            arcadeHub.style.display = 'none';
+            gameScreen.style.display = 'block';
+            titleHud.innerText = "🎣 Garden Fishing (Click to Fish!)";
+            score = 0;
+            scoreDisplay.innerText = "Fish Caught: " + score;
+            fishState = "waiting";
+            fishTimer = Math.floor(Math.random() * 80) + 50;
+
+            if(gameInterval) clearInterval(gameInterval);
+            gameInterval = setInterval(updateFishing, 1000 / 60);
+
+            canvas.onclick = handleFishingClick;
+        }
+
+        function handleFishingClick() {
+            if (fishState === "biting") {
+                score += 1;
+                scoreDisplay.innerText = "Fish Caught: " + score;
+                fishState = "waiting";
+                fishTimer = Math.floor(Math.random() * 80) + 50;
+            } else if (fishState === "waiting") {
+                // Penalización por tirar antes de tiempo
+                score = Math.max(0, score - 1);
+                scoreDisplay.innerText = "Fish Caught: " + score;
+            }
+        }
+
+        function updateFishing() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Dibujar agua y estanque
+            ctx.fillStyle = '#005577';
+            ctx.fillRect(0, 200, canvas.width, 200);
+
+            // Lógica de pesca
+            if (fishState === "waiting") {
+                fishTimer--;
+                if (fishTimer <= 0) {
+                    fishState = "biting";
+                    fishTimer = 45; // Tiempo que tienes para hacer clic
+                }
+            } else if (fishState === "biting") {
+                fishTimer--;
+                if (fishTimer <= 0) {
+                    fishState = "waiting"; // El pez se escapó
+                    fishTimer = Math.floor(Math.random() * 80) + 50;
+                }
+            }
+
+            // Dibujar mensajes visuales en el canvas
+            ctx.fillStyle = "#ffffff";
+            ctx.font = "20px Poppins";
+            ctx.textAlign = "center";
+            
+            if (fishState === "waiting") {
+                ctx.fillText("Bobber in water... Wait for a bite!", canvas.width / 2, 100);
+                ctx.fillStyle = "#00ffcc";
+                ctx.fillRect(canvas.width / 2 - 5, 180, 10, 30); // Sedal
+            } else if (fishState === "biting") {
+                ctx.fillStyle = "#ffcc00";
+                ctx.font = "bold 26px Poppins";
+                ctx.fillText("⚡ BITE! CLICK NOW! ⚡", canvas.width / 2, 100);
+                ctx.fillRect(canvas.width / 2 - 5, 180, 10, 30);
+            }
         }
     </script>
 </body>
