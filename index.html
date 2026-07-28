@@ -3,20 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DB Games Studios Hub</title>
+    <title>DB Games Studios Hub - Complete Arcade</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --bg-color: #0c0814;
+            --container-bg: rgba(22, 14, 38, 0.9);
+            --primary-color: #ff7675;
+            --secondary-color: #fdcb6e;
+            --accent-color: #00b894;
+            --text-main: #ffffff;
+            --text-sub: #dfe6e9;
+        }
+
         body {
             font-family: 'Fredoka', cursive, sans-serif;
-            color: #ffffff;
+            color: var(--text-main);
             text-align: center;
             margin: 0;
             min-height: 100vh;
             overflow-x: hidden;
             position: relative;
-            background-color: #0c0814;
+            background-color: var(--bg-color);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -39,20 +49,21 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: linear-gradient(135deg, rgba(12, 8, 20, 0.92), rgba(26, 15, 45, 0.95));
+            background: linear-gradient(135deg, rgba(12, 8, 20, 0.94), rgba(26, 15, 45, 0.96));
             z-index: -1;
         }
 
         .main-container {
-            background: rgba(22, 14, 38, 0.88);
-            backdrop-filter: blur(16px);
+            background: var(--container-bg);
+            backdrop-filter: blur(18px);
             padding: 40px;
             border-radius: 32px;
-            border: 3px solid #ff7675;
-            box-shadow: 0 15px 35px rgba(255, 118, 117, 0.25), inset 0 0 20px rgba(255, 255, 255, 0.05);
+            border: 3px solid var(--primary-color);
+            box-shadow: 0 20px 40px rgba(255, 118, 117, 0.25), inset 0 0 25px rgba(255, 255, 255, 0.04);
             max-width: 1100px;
             width: 100%;
             z-index: 1;
+            box-sizing: border-box;
         }
 
         .header {
@@ -68,7 +79,7 @@
             height: 80px;
             border-radius: 22px;
             object-fit: cover;
-            border: 3px solid #fdcb6e;
+            border: 3px solid var(--secondary-color);
             box-shadow: 0 0 20px rgba(253, 203, 110, 0.5);
         }
 
@@ -82,14 +93,14 @@
         .main-title, .sub-title {
             font-size: 36px;
             font-weight: 700;
-            color: #fdcb6e;
+            color: var(--secondary-color);
             line-height: 1.1;
             text-shadow: 3px 3px 0px #e17055;
         }
 
         .subtitle {
             font-size: 16px;
-            color: #dfe6e9;
+            color: var(--text-sub);
             margin-bottom: 25px;
             font-weight: 400;
         }
@@ -115,6 +126,7 @@
             justify-content: center;
             transition: all 0.2s ease;
             box-shadow: 0 6px 0 rgba(0,0,0,0.3);
+            font-family: 'Fredoka', cursive, sans-serif;
         }
         .btn:active { transform: translateY(4px); box-shadow: 0 2px 0 rgba(0,0,0,0.3); }
 
@@ -126,7 +138,7 @@
         .btn-roblox:hover { background-color: #74b9ff; }
 
         .btn-web {
-            background-color: #00b894;
+            background-color: var(--accent-color);
             color: white;
             border: 2px solid #55efc4;
         }
@@ -140,7 +152,7 @@
 
         .arcade-title {
             font-size: 26px;
-            color: #fdcb6e;
+            color: var(--secondary-color);
             margin-bottom: 20px;
             font-weight: 700;
             text-shadow: 2px 2px 0px #d63031;
@@ -169,7 +181,7 @@
 
         .game-card:hover {
             transform: translateY(-8px);
-            border-color: #fdcb6e;
+            border-color: var(--secondary-color);
             box-shadow: 0 12px 0 rgba(0,0,0,0.4), 0 0 20px rgba(253, 203, 110, 0.4);
         }
 
@@ -187,7 +199,7 @@
         }
 
         .game-btn {
-            background-color: #ff7675;
+            background-color: var(--primary-color);
             color: white;
             border: 2px solid #fab1a0;
             padding: 10px 14px;
@@ -198,10 +210,11 @@
             transition: background 0.2s;
             text-decoration: none;
             box-shadow: 0 4px 0 rgba(0,0,0,0.2);
+            font-family: 'Fredoka', cursive, sans-serif;
         }
 
         .game-card:hover .game-btn {
-            background-color: #fdcb6e;
+            background-color: var(--secondary-color);
             color: #2d3436;
             border-color: #ffeaa7;
         }
@@ -209,8 +222,8 @@
         /* PANTALLA DE JUEGO GRANDE */
         #game-screen {
             display: none;
-            background: rgba(18, 10, 30, 0.98);
-            border: 4px solid #fdcb6e;
+            background: rgba(18, 10, 30, 0.99);
+            border: 4px solid var(--secondary-color);
             border-radius: 28px;
             padding: 30px;
             margin-top: 10px;
@@ -224,7 +237,7 @@
             align-items: center;
             font-size: 22px;
             font-weight: 700;
-            color: #fdcb6e;
+            color: var(--secondary-color);
             margin-bottom: 15px;
             padding: 0 10px;
             text-shadow: 2px 2px 0px #000;
@@ -232,7 +245,7 @@
 
         #game-canvas {
             background: radial-gradient(circle, #3b2063 0%, #170b2c 100%);
-            border: 4px solid #ff7675;
+            border: 4px solid var(--primary-color);
             border-radius: 20px;
             display: block;
             margin: 0 auto 20px auto;
@@ -240,8 +253,56 @@
             box-shadow: inset 0 0 30px rgba(0,0,0,0.8), 0 0 15px rgba(255,118,117,0.3);
         }
 
+        /* CONTENEDOR ESPECÍFICO PARA FRUIT MERGE MATCH-3 */
+        #merge-game-container {
+            display: none;
+            background: radial-gradient(circle, #3b2063 0%, #170b2c 100%);
+            border: 4px solid var(--primary-color);
+            border-radius: 20px;
+            padding: 20px;
+            margin: 0 auto 20px auto;
+            max-width: 440px;
+            box-sizing: border-box;
+            box-shadow: inset 0 0 30px rgba(0,0,0,0.8), 0 0 15px rgba(255,118,117,0.3);
+        }
+
+        .merge-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 8px;
+            background-color: rgba(0, 0, 0, 0.4);
+            padding: 12px;
+            border-radius: 16px;
+            border: 2px solid #6c5ce7;
+        }
+
+        .merge-cell {
+            aspect-ratio: 1;
+            background-color: #2d1b4e;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            cursor: pointer;
+            user-select: none;
+            transition: transform 0.15s, background-color 0.2s, border 0.2s;
+            box-shadow: 0 4px 0 rgba(0,0,0,0.3);
+        }
+
+        .merge-cell:hover {
+            background-color: #3b2063;
+            transform: scale(1.08);
+        }
+
+        .merge-cell.selected {
+            border: 3px solid var(--secondary-color);
+            background-color: #482c78;
+            transform: scale(1.12);
+        }
+
         .back-arcade-btn {
-            background-color: #ff7675;
+            background-color: var(--primary-color);
             color: white;
             border: 3px solid #fab1a0;
             padding: 12px 30px;
@@ -251,6 +312,7 @@
             cursor: pointer;
             transition: transform 0.2s;
             box-shadow: 0 6px 0 rgba(0,0,0,0.3);
+            font-family: 'Fredoka', cursive, sans-serif;
         }
         .back-arcade-btn:hover { background-color: #d63031; transform: translateY(-2px); }
 
@@ -301,7 +363,7 @@
         .stat-number {
             font-size: 30px;
             font-weight: 700;
-            color: #00b894;
+            color: var(--accent-color);
             text-shadow: 2px 2px 0px #000;
             margin-bottom: 5px;
         }
@@ -348,13 +410,21 @@
 
         <div class="divider"></div>
 
-        <!-- PANTALLA DE JUEGO GRANDE -->
+        <!-- PANTALLA DE JUEGO GRANDE (CANVAS O MERGE) -->
         <div id="game-screen">
             <div class="game-hud">
                 <span id="game-title-hud">🎮 Minigame</span>
                 <span id="game-score">Score: 0</span>
             </div>
+            
+            <!-- Canvas estándar para los 14 juegos -->
             <canvas id="game-canvas" width="800" height="420"></canvas>
+
+            <!-- Contenedor Match-3 exclusivo para Fruit Merge (Juego 3) -->
+            <div id="merge-game-container">
+                <div class="merge-grid" id="merge-grid"></div>
+            </div>
+
             <button class="back-arcade-btn" onclick="closeGame()">⬅ Back to Arcade</button>
         </div>
 
@@ -394,7 +464,7 @@
         </div>
     </div>
 
-    <!-- MOTOR DE JUEGOS ARCADE CON EMOJIS Y DISEÑO CARTOON -->
+    <!-- MOTOR DE JUEGOS ARCADE Y MATCH-3 -->
     <script>
         const arcadeHub = document.getElementById('arcade-hub');
         const gameScreen = document.getElementById('game-screen');
@@ -402,6 +472,9 @@
         const ctx = canvas.getContext('2d');
         const scoreDisplay = document.getElementById('game-score');
         const titleHud = document.getElementById('game-title-hud');
+        
+        const mergeContainer = document.getElementById('merge-game-container');
+        const mergeGridElement = document.getElementById('merge-grid');
 
         let gameLoop = null;
         let score = 0;
@@ -412,7 +485,7 @@
         window.addEventListener('keyup', e => keys[e.code] = false);
 
         function closeGame() {
-            clearInterval(gameLoop);
+            if(gameLoop) clearInterval(gameLoop);
             gameScreen.style.display = 'none';
             arcadeHub.style.display = 'block';
             canvas.onclick = null;
@@ -429,6 +502,14 @@
         let entities = [];
         let stateTimer = 0;
 
+        // Variables específicas para Fruit Merge (Match-3)
+        const fruitTypes = ['🍓', '🍇', '🍉', '🍏', '🥕'];
+        const mergeGridSize = 6;
+        let mergeBoard = [];
+        let mergeSelectedIdx = null;
+        let mergeIsProcessing = false;
+        let comboMultiplier = 1;
+
         function launchGame(id) {
             activeMinigame = id;
             arcadeHub.style.display = 'none';
@@ -437,19 +518,165 @@
             score = 0;
             scoreDisplay.innerText = "Score: " + score;
             canvas.onclick = null;
-
             if(gameLoop) clearInterval(gameLoop);
-            initMinigameState();
-            gameLoop = setInterval(updateMinigame, 1000 / 60);
+
+            // Control de vistas canvas vs match-3 grid
+            if(id === 3) {
+                canvas.style.display = 'none';
+                mergeContainer.style.display = 'block';
+                initFruitMerge();
+            } else {
+                canvas.style.display = 'block';
+                mergeContainer.style.display = 'none';
+                initMinigameState();
+                gameLoop = setInterval(updateMinigame, 1000 / 60);
+            }
         }
 
+        // LÓGICA DE FRUIT MERGE MATCH-3
+        function initFruitMerge() {
+            score = 0;
+            comboMultiplier = 1;
+            mergeSelectedIdx = null;
+            scoreDisplay.innerText = "Score: " + score;
+            generateValidMergeBoard();
+            renderMergeBoard();
+        }
+
+        function generateValidMergeBoard() {
+            do {
+                mergeBoard = [];
+                for (let i = 0; i < mergeGridSize * mergeGridSize; i++) {
+                    mergeBoard.push(fruitTypes[Math.floor(Math.random() * fruitTypes.length)]);
+                }
+            } while (findMergeMatches().length > 0);
+        }
+
+        function renderMergeBoard() {
+            mergeGridElement.innerHTML = '';
+            mergeBoard.forEach((fruit, index) => {
+                const cell = document.createElement('div');
+                cell.classList.add('merge-cell');
+                cell.textContent = fruit;
+                if (mergeSelectedIdx === index) {
+                    cell.classList.add('selected');
+                }
+                cell.addEventListener('click', () => handleMergeClick(index));
+                mergeGridElement.appendChild(cell);
+            });
+        }
+
+        async function handleMergeClick(index) {
+            if (mergeIsProcessing) return;
+
+            if (mergeSelectedIdx === null) {
+                mergeSelectedIdx = index;
+                renderMergeBoard();
+            } else {
+                let first = mergeSelectedIdx;
+                let second = index;
+                mergeSelectedIdx = null;
+
+                if (isMergeAdjacent(first, second)) {
+                    swapMerge(first, second);
+                    renderMergeBoard();
+
+                    let matches = findMergeMatches();
+                    if (matches.length > 0) {
+                        comboMultiplier = 1;
+                        await processMergeMatches();
+                    } else {
+                        swapMerge(first, second);
+                        renderMergeBoard();
+                    }
+                } else {
+                    renderMergeBoard();
+                }
+            }
+        }
+
+        function isMergeAdjacent(i1, i2) {
+            const r1 = Math.floor(i1 / mergeGridSize), c1 = i1 % mergeGridSize;
+            const r2 = Math.floor(i2 / mergeGridSize), c2 = i2 % mergeGridSize;
+            return Math.abs(r1 - r2) + Math.abs(c1 - c2) === 1;
+        }
+
+        function swapMerge(i, j) {
+            let temp = mergeBoard[i];
+            mergeBoard[i] = mergeBoard[j];
+            mergeBoard[j] = temp;
+        }
+
+        function findMergeMatches() {
+            let matched = new Set();
+            for (let r = 0; r < mergeGridSize; r++) {
+                for (let c = 0; c < mergeGridSize - 2; c++) {
+                    let idx = r * mergeGridSize + c;
+                    let f = mergeBoard[idx];
+                    if (f && f === mergeBoard[idx + 1] && f === mergeBoard[idx + 2]) {
+                        matched.add(idx); matched.add(idx + 1); matched.add(idx + 2);
+                    }
+                }
+            }
+            for (let c = 0; c < mergeGridSize; c++) {
+                for (let r = 0; r < mergeGridSize - 2; r++) {
+                    let idx = r * mergeGridSize + c;
+                    let f = mergeBoard[idx];
+                    if (f && f === mergeBoard[idx + mergeGridSize] && f === mergeBoard[idx + mergeGridSize * 2]) {
+                        matched.add(idx); matched.add(idx + mergeGridSize); matched.add(idx + mergeGridSize * 2);
+                    }
+                }
+            }
+            return Array.from(matched);
+        }
+
+        async function processMergeMatches() {
+            mergeIsProcessing = true;
+            let matches = findMergeMatches();
+
+            while (matches.length > 0) {
+                score += matches.length * 15 * comboMultiplier;
+                scoreDisplay.innerText = "Score: " + score;
+
+                matches.forEach(idx => mergeBoard[idx] = '');
+                renderMergeBoard();
+                await sleep(220);
+
+                for (let c = 0; c < mergeGridSize; c++) {
+                    let emptyRow = mergeGridSize - 1;
+                    for (let r = mergeGridSize - 1; r >= 0; r--) {
+                        let idx = r * mergeGridSize + c;
+                        if (mergeBoard[idx] !== '') {
+                            let targetIdx = emptyRow * mergeGridSize + c;
+                            mergeBoard[targetIdx] = mergeBoard[idx];
+                            if (targetIdx !== idx) mergeBoard[idx] = '';
+                            emptyRow--;
+                        }
+                    }
+                    for (let r = emptyRow; r >= 0; r--) {
+                        mergeBoard[r * mergeGridSize + c] = fruitTypes[Math.floor(Math.random() * fruitTypes.length)];
+                    }
+                }
+
+                renderMergeBoard();
+                await sleep(250);
+                matches = findMergeMatches();
+                if (matches.length > 0) comboMultiplier++;
+            }
+            mergeIsProcessing = false;
+        }
+
+        function sleep(ms) { return new Promise(resolve => setTimeout(resolve, ms)); }
+
+
+        // ESTADOS DE LOS OTROS 14 MINIJUEGOS EN CANVAS
         function initMinigameState() {
             entities = [];
             p1.x = 350;
             if(activeMinigame === 1) {
                 entities = [{x: Math.random()*750, y: 0, emoji: '🍓', speed: 3.5}];
-            } else if(activeMinigame === 3 || activeMinigame === 12 || activeMinigame === 14) {
-                let em = activeMinigame === 3 ? '🍉' : (activeMinigame === 12 ? '🍯' : '💧');
+            } else if(activeMinigame === 12 || activeMinigame === 14) {
+                let em = activeMinigame === 12 ? '🍯' : '💧';
                 entities = [{x: Math.random()*700+50, y: 0, emoji: em, speed: 3}];
             } else if(activeMinigame === 4 || activeMinigame === 7) {
                 stateTimer = 60;
@@ -462,7 +689,6 @@
         function updateMinigame() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-            // Fondo decorativo con estrellas/brillos sutiles
             ctx.fillStyle = "rgba(255, 255, 255, 0.03)";
             ctx.fillRect(20, 20, 20, 20);
             ctx.fillRect(700, 80, 15, 15);
@@ -495,7 +721,6 @@
                     canvas.onclick = () => { score++; scoreDisplay.innerText = "Score: " + score; };
                     break;
 
-                case 3: // Fruit Merge
                 case 12: // Honey Drop
                 case 14: // Rain Catcher
                     let item = entities[0];
